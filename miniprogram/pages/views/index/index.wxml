@@ -18,14 +18,14 @@
    <!-- 私密列表 -->
   <view class="list-box">
     <van-cell title="日记管理" is-link data-url="../diary/diary" clickable bindtap="onLink"></van-cell>
+    <van-cell title="日程提醒" is-link data-url="../schedule/schedule" clickable bindtap="onLink"></van-cell>
     <van-cell title="相册管理" is-link data-url="../photo/photo" clickable bindtap="onLink"></van-cell>
-    <van-cell title="日程管理" is-link data-url="../schedule/schedule" clickable bindtap="onLink"></van-cell>
-    <van-cell title="备忘录" is-link data-url="../memorandum/memorandum" clickable bindtap="onLink"></van-cell>
+    <van-cell title="便签" is-link data-url="../memorandum/memorandum" clickable bindtap="onLink"></van-cell>
   </view>
 
    <!-- 关于我们 -->
   <view class="about-box">
-    <text data-url="../diary/diary" bindtap="onLink">关于我们</text>
+    <text data-url="../about/about" bindtap="onLinkAbout">关于我们</text>
   </view>
 
   <dialog-alert data="{{alertData}}" bind:alertCallBack="alertCallBack"></dialog-alert>

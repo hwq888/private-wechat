@@ -7,7 +7,8 @@
     "pages/views/schedule/schedule",
     "pages/views/memorandum/memorandum",
     "pages/views/release/release",
-    "pages/views/diary/details/details"
+    "pages/views/diary/details/details",
+    "pages/views/about/about"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

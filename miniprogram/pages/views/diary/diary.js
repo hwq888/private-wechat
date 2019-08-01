@@ -27,6 +27,11 @@ Page({
         this.setData({
           totalCount: res.total
         })
+        if (this.data.totalCount === 0) {
+          this.setData({
+            showNoContent: true
+          })
+        }
     })
   },
   // 获取日记列表-初始化
@@ -51,16 +56,10 @@ Page({
         this.setData({
           list: this.data.list.concat(res.data)
         })
-        if (res.data.length === 0 && this.data.list.length === this.data.totalCount) {
+        if (res.data.length === 0 && this.data.list.length === this.data.totalCount && this.data.totalCount !== 0) {
           wx.showToast({
             icon: 'none',
             title: '没有更多数据了',
-          })
-        }
-        
-        if (this.data.list === 0) {
-          this.setData({
-            showNoContent: true
           })
         }
       }).catch(err => {
@@ -168,7 +167,8 @@ Page({
    */
   onShow: function () {
     this.setData({
-      selectId: ''
+      selectId: '',
+      showNoContent: false
     })
     this.getTotalCount()
     this.getDiaryList()

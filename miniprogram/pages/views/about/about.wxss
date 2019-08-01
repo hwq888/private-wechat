@@ -1,0 +1,13 @@
+/* miniprogram/pages/views/about/about.wxss */
+.swiper-box{
+  height:25vh;
+}
+.slide-image{
+  width: 100%;
+  height: 100%;
+}
+
+.list-box{
+  width: 100%;
+  margin-top: 25rpx;
+}

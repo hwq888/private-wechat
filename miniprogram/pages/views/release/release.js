@@ -32,55 +32,97 @@ Page({
   },
   // 确定
   submit: function () {
-    if (this.data.title.length < 1) {
+    if (!this.data.title && this.data.bindType === 1) {
       wx.showToast({
-        title: '标题至少需要2个文字以上',
+        title: '请输入标题',
         icon: 'none'
       })
       return
     }
-    if (this.data.content.length < 10) {
+    if (!this.data.content) {
       wx.showToast({
-        title: '内容至少需要10个文字以上',
+        title: '请输入内容',
         icon: 'none'
       })
       return
     }
     this.setData({ loading: true })
-    if (this.data.id) {
-      // 编辑
-      this.updataDiary(this.data.id)
-    } else {
-      // 新增
-      db.collection('diary').add({
-        data: {
-          title: this.data.title,
-          content: this.data.content,
-          time: Utils.formatTime(new Date(), 'yyyy-MM-dd hh:mm:ss')
-        },
-        success: res => {
-          console.log(res)
-          wx.showToast({
-            title: '发布成功',
-            icon: 'success'
-          })
-          setTimeout(() => {
-            wx.navigateBack({
-              delta: 1
-            })
-          }, 2000)
-        },
-        fail: err => {
-          console.log(err)
-          this.setData({
-            loading: false
-          })
-        }
-      })
+    // 日记
+    if (this.data.bindType === '1') {
+      if (this.data.id) {
+        // 编辑日记
+        this.updataDiary(this.data.id)
+      } else {
+        // 新增日记
+        this.addDiary();
+      }
+    } else if (this.data.bindType === '2') {
+      // 便签
+      if (this.data.id) {
+        // 编辑便签
+        this.updataMemorandum(this.data.id)
+      } else {
+        // 新增便签
+        this.addMemorandum()
+      }
     }
-    
   },
-  // 更新
+  // 新增日记
+  addDiary: function () {
+    db.collection('diary').add({
+      data: {
+        title: this.data.title,
+        content: this.data.content,
+        time: Utils.formatTime(new Date(), 'yyyy-MM-dd hh:mm:ss')
+      },
+      success: res => {
+        console.log(res)
+        wx.showToast({
+          title: '发布成功',
+          icon: 'success'
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2000)
+      },
+      fail: err => {
+        console.log(err)
+        this.setData({
+          loading: false
+        })
+      }
+    })
+  },
+  // 新增便签
+  addMemorandum: function () {
+    db.collection('memorandum').add({
+      data: {
+        content: this.data.content,
+        time: Utils.formatTime(new Date(), 'yyyy-MM-dd hh:mm:ss')
+      },
+      success: res => {
+        console.log(res)
+        wx.showToast({
+          title: '发布成功',
+          icon: 'success'
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2000)
+      },
+      fail: err => {
+        console.log(err)
+        this.setData({
+          loading: false
+        })
+      }
+    })
+  },
+  // 更新日记
   updataDiary: function (id) {
     db.collection('diary').doc(id).update({
       data: {
@@ -104,7 +146,30 @@ Page({
       }
     })
   },
-  // 查询
+  // 更新便签
+  updataMemorandum: function (id) {
+    db.collection('memorandum').doc(id).update({
+      data: {
+        content: this.data.content
+      },
+      success: res => {
+        console.log(res)
+        wx.showToast({
+          title: '编辑成功',
+          icon: 'success'
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2000)
+      },
+      fail: err => {
+        console.log(err)
+      }
+    })
+  },
+  // 查询日记
   getDiary: function (id) {
     db.collection('diary').where({
       _id: id
@@ -112,6 +177,19 @@ Page({
       console.log(res)
       this.setData({
         title: res.data[0].title,
+        content: res.data[0].content
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+  // 查询便签
+  getMemorandum: function (id) {
+    db.collection('memorandum').where({
+      _id: id
+    }).get().then(res => {
+      console.log(res)
+      this.setData({
         content: res.data[0].content
       })
     }).catch(err => {
@@ -136,13 +214,32 @@ Page({
     })
     // 编辑日记
     if (options.id) {
-      wx.setNavigationBarTitle({
-        title: '编辑'
-      })
       this.setData({
         id: options.id
       })
-      this.getDiary(this.data.id)
+      if (this.data.bindType === '1') {
+        wx.setNavigationBarTitle({
+          title: '编辑日记'
+        })
+        this.getDiary(this.data.id)
+      }
+      if (this.data.bindType === '2') {
+        wx.setNavigationBarTitle({
+          title: '编辑便签'
+        })
+        this.getMemorandum(this.data.id)
+      }
+    } else {
+      if (this.data.bindType === '1') {
+        wx.setNavigationBarTitle({
+          title: '发布日记'
+        })
+      }
+      if (this.data.bindType === '2') {
+        wx.setNavigationBarTitle({
+          title: '发布便签'
+        })
+      }
     }
   },
 

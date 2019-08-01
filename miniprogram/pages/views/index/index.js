@@ -106,6 +106,7 @@ Page({
       console.log(err)
     })
   },
+  // 链接跳转
   onLink: function (e) {
     this.setData({
       linkUrl: e.target.dataset.url
@@ -133,6 +134,12 @@ Page({
         url: this.data.linkUrl
       })
     }
+  },
+  // 关于我们
+  onLinkAbout (e) {
+    wx.navigateTo({
+      url: e.target.dataset.url
+    })
   },
   // 未设置密码-引导用户设置密码回调
   alertCallBack(event) {

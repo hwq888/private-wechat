@@ -1,6 +1,26 @@
 <!--miniprogram/pages/views/memorandum/memorandum.wxml-->
 <view>
-  <no-content>
+  <view class="memorandum-box" wx:if="{{list.length > 0}}">
+    <view wx:for="{{list}}" wx:key="{{index}}" data-id='{{item._id}}' class="memorandum-tab-box {{selectId==item._id?'activeClass':''}}" bindlongtap="longTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+      <view class="memorandum-ico"><image src="/images/ico/bq.png"></image></view>
+      <view class="memorandum-tab-operation"></view>
+      {{item.content}}
+    </view>
+    <view class="diary-bottom-btn {{selectId?'diary-bottom-btn-active':''}}">
+      <view class="add-diary-btn" bindtap="onLinkRelease">+</view>
+      <view class="bottom-btn">
+         <view class="btn-edit" bindtap="onLinkEdit">编辑</view>
+         <view class="btn-del" bindtap="onLinkDel">删除</view>
+      </view>
+    </view>
+    <view class="diary-bottom-mask" wx:if="{{selectId}}" bindtap="removerSelectId"></view>
+  </view>
+  <no-content wx:if="{{showNoContent}}">
     <view slot="describe">暂无内容</view>
+    <view slot="operation" bindtap="onLinkRelease">
+      <van-button type="primary" size="small">立即发布</van-button>
+    </view>
   </no-content>
+  <dialog-alert data="{{alertData}}" bind:alertCallBack="alertCallBack"></dialog-alert>
 </view>
+

@@ -46,37 +46,45 @@
 			"current": 4,
 			"list": [
 				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide",
-					"query": ""
+					"id": 0,
+					"name": "about（关于我们）",
+					"pathName": "pages/views/about/about",
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": 1,
-					"name": "passWord",
+					"name": "passWord（密码）",
 					"pathName": "pages/views/passWord/passWord",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "photo",
+					"id": 2,
+					"name": "photo（相册）",
 					"pathName": "pages/views/photo/photo",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "diary",
+					"id": 3,
+					"name": "diary（日记）",
 					"pathName": "pages/views/diary/diary",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "release",
+					"id": 4,
+					"name": "release（发布）",
 					"pathName": "pages/views/release/release",
-					"query": "type=1",
+					"query": "type=2",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "memorandum（便签）",
+					"pathName": "pages/views/memorandum/memorandum",
+					"query": "",
 					"scene": null
 				}
 			]

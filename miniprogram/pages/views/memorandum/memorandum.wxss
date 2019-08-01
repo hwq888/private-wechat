@@ -1,2 +1,96 @@
 /* miniprogram/pages/views/memorandum/memorandum.wxss */
 /* @import "/style/guide.wxss"; */
+.memorandum-box{
+  padding:50rpx;
+}
+.memorandum-tab-box{
+  border:1px solid #f0f0f0;
+  font-size: 12px;
+  color: #ac9954;
+  padding: 50rpx 30rpx;
+  margin-bottom: 30rpx;
+  background: #faf3a5;
+  border-radius: 40rpx 0 40rpx;
+  position: relative;
+  word-wrap: break-word;
+  word-break: normal;
+}
+.memorandum-ico{
+  position: absolute;
+  right:15rpx;
+  top:10rpx;
+  width: 35rpx;
+  height: 35rpx;
+}
+.memorandum-ico image{
+  width: 100%;
+  height: 100%;
+}
+.diary-bottom-btn {
+  z-index: 50;
+  width: 100%;
+  height: 220rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100rpx);
+  transition:all 0.2s ease-out 0s;
+}
+.bottom-btn{
+  height:100rpx;
+  width: 100%;
+  position: absolute;
+  left:0;
+  bottom: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.btn-edit{
+  width: 100%;
+  height:100%;
+  line-height: 100rpx;
+  background: rgba(7,193,69,0.6);
+  color: #fff;
+}
+.btn-del{
+  width: 100%;
+  height:100%;
+  line-height: 100rpx;
+  background: rgba(248, 3, 3, 0.6);
+  color: #fff;
+}
+.add-diary-btn{
+  z-index: 50;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  position: absolute;
+  top: 0;
+  left: 325rpx;
+  font-size:45rpx;
+  border-radius: 50px;
+  background: #07c160; color: #fff;
+  text-align: center;
+}
+.activeClass{
+  box-shadow: 0 0 20rpx rgba(84, 85, 84, 0.6);
+}
+.diary-bottom-btn-active {
+  transform: translateY(0);
+}
+.diary-bottom-mask {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  right:0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7)
+}
+

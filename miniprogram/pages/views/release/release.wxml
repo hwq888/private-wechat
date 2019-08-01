@@ -8,17 +8,17 @@
         clearable
         label="标题"
         placeholder="请输入标题"
-        maxlength="30"
+        maxlength="18"
         title-width="100rpx"
         data-type="title"
         bindinput="bindKeyInput"
+        wx:if="{{bindType === 1}}"
       />
       <van-field
         value="{{ content }}"
         type="textarea"
-        clearable
         label="内容"
-        placeholder="请输入内容,最少10个文字"
+        placeholder="请输入内容"
         autosize
         border="{{ false }}"
         title-width="100rpx"

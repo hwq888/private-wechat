@@ -1,6 +1,9 @@
 {
-  "navigationBarTitleText": "备忘录",
+  "navigationBarTitleText": "便签",
   "usingComponents": {
+    "van-collapse": "/vant-weapp/collapse",
+    "van-collapse-item": "/vant-weapp/collapse-item",
+    "dialog-alert": "/pages/components/dialog-alert/dialog-alert",
     "no-content": "/pages/components/no-content/no-content"
   }
 }
