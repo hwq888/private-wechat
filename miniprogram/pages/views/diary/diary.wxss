@@ -1,8 +1,5 @@
 /* miniprogram/pages/views/diary/diary.wxss */
 /* @import "/style/guide.wxss"; */
-.scroll-view-box{
-  height:100vh;
-}
 .diary-tab-box{
   margin-top:20rpx;
 }
