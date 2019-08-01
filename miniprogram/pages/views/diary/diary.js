@@ -7,10 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    selectId: "", // // 选中日记id
+    touchStartTime: '',
+    touchEndTime: '',
     showNoContent: false,
     totalCount: '', // 总数量
     pageSize: 10,  // 每页10条数据
-    list: []
+    list: [],
+    alertData: {}
   },
   // 获取列表总数
   getTotalCount: function () {
@@ -31,7 +35,7 @@ Page({
       list: []
     })
     wx.showLoading({
-      title: '加载中',
+      title: '加载中...',
     })
     db.collection('diary')
       .where({
@@ -63,15 +67,28 @@ Page({
         console.log(err)
       })
   },
+  /// 按钮触摸开始触发的事件
+  touchStart: function (e) {
+    this.touchStartTime = e.timeStamp
+  },
+
+  /// 按钮触摸结束触发的事件
+  touchEnd: function (e) {
+    this.touchEndTime = e.timeStamp
+  },
   // 跳转到日记详情
   linkDetails: function (e) {
     console.log('linkDetails')
     console.log(e)
-    const _id = e.target.dataset.id
-    wx.navigateTo({
-      url: './details/details?id=' + _id
-    })
+    // 控制点击事件在350ms内触发，加这层判断是为了防止长按时会触发点击事件
+    if (this.touchEndTime - this.touchStartTime < 350) {
+      const _id = e.target.dataset.id
+      wx.navigateTo({
+        url: './details/details?id=' + _id
+      })
+    }
   },
+  // 跳转到发布日记
   onLinkRelease: function () {
     wx.navigateTo({
       url: '../release/release?type=1'
@@ -84,6 +101,51 @@ Page({
       //     console.log(data)
       //   }
       // }
+    })
+  },
+  // 编辑日记
+  onLinkEdit: function () {
+    wx.navigateTo({
+      url: `../release/release?type=1&id=${this.data.selectId}`
+    })
+  },
+  // 删除日记
+  onLinkDel: function () {
+    this.setData({
+      alertData: {
+        show: true,
+        cancelBtn: true,
+        cancelBtnText: '取消',
+        confirmButtonText: '删除',
+        message: '您确定删除这篇日记？'
+      }
+    })
+  },
+  // 确认删除日记
+  alertCallBack() {
+    wx.showLoading({
+      title: '删除中...',
+    })
+    db.collection('diary').doc(this.data.selectId).remove()
+      .then(res => {
+        console.log(res)
+        this.onShow()
+      }).catch(err => {
+        console.log(err)
+      })
+  },
+  // 长按
+  longTap (e) {
+    console.log(e)
+    console.log('longTap')
+    this.setData({
+      selectId: e.target.dataset.id
+    })
+  },
+  // 清除removerSelectId 
+  removerSelectId () {
+    this.setData({
+      selectId: ''
     })
   },
 
@@ -105,6 +167,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      selectId: ''
+    })
     this.getTotalCount()
     this.getDiaryList()
   },
@@ -136,7 +201,7 @@ Page({
   onReachBottom: function () {
     // this.getDiaryList()
     wx.showLoading({
-      title: '加载中',
+      title: '加载中...',
     })
     db.collection('diary')
       .where({

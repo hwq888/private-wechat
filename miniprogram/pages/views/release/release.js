@@ -9,6 +9,7 @@ Page({
    */
   data: {
     loading: false,
+    id: '', // 编辑id
     bindType: '', // 1: 日记 2:备忘录
     title: '',
     content: '',
@@ -46,16 +47,50 @@ Page({
       return
     }
     this.setData({ loading: true })
-    db.collection('diary').add({
+    if (this.data.id) {
+      // 编辑
+      this.updataDiary(this.data.id)
+    } else {
+      // 新增
+      db.collection('diary').add({
+        data: {
+          title: this.data.title,
+          content: this.data.content,
+          time: Utils.formatTime(new Date(), 'yyyy-MM-dd hh:mm:ss')
+        },
+        success: res => {
+          console.log(res)
+          wx.showToast({
+            title: '发布成功',
+            icon: 'success'
+          })
+          setTimeout(() => {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 2000)
+        },
+        fail: err => {
+          console.log(err)
+          this.setData({
+            loading: false
+          })
+        }
+      })
+    }
+    
+  },
+  // 更新
+  updataDiary: function (id) {
+    db.collection('diary').doc(id).update({
       data: {
         title: this.data.title,
-        content: this.data.content,
-        time: Utils.formatTime(new Date(), 'yyyy-MM-dd hh:mm:ss')
+        content: this.data.content
       },
       success: res => {
         console.log(res)
         wx.showToast({
-          title: '发布成功',
+          title: '编辑成功',
           icon: 'success'
         })
         setTimeout(() => {
@@ -66,45 +101,32 @@ Page({
       },
       fail: err => {
         console.log(err)
-        this.setData({
-          loading: false
-        })
       }
     })
   },
-  // 更新
-  updata: function () {
-    // db.collection('passWord').doc('face13585d3ea136058fbc8265014e26').update({
-    //   data: {
-    //     pwa: '654321'
-    //   },
-    //   success: res => {
-    //     console.log(res)
-    //   },
-    //   fail: err => {
-    //     console.log(err)
-    //   }
-    // })
-  },
   // 查询
-  search: function () {
-    // db.collection('passWord').where({
-    //   _openid: 'o_ct45Bc33-ZwG0Z7aRz-K4pw22Y'
-    // }).get().then(res => {
-    //   console.log(res)
-    // }).catch(err => {
-    //   console.log(err)
-    // })
+  getDiary: function (id) {
+    db.collection('diary').where({
+      _id: id
+    }).get().then(res => {
+      console.log(res)
+      this.setData({
+        title: res.data[0].title,
+        content: res.data[0].content
+      })
+    }).catch(err => {
+      console.log(err)
+    })
   },
   // 单条数据删除， 多条数据删除需要用到云函数
-  delete: function () {
-    db.collection('diary').doc('26b301645d3fb1160628ccbd454acdc5').remove()
-      .then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
-  },
+  // delete: function () {
+  //   db.collection('diary').doc('26b301645d3fb1160628ccbd454acdc5').remove()
+  //     .then(res => {
+  //       console.log(res)
+  //     }).catch(err => {
+  //       console.log(err)
+  //     })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -112,6 +134,16 @@ Page({
     this.setData({
       bindType: options.type
     })
+    // 编辑日记
+    if (options.id) {
+      wx.setNavigationBarTitle({
+        title: '编辑'
+      })
+      this.setData({
+        id: options.id
+      })
+      this.getDiary(this.data.id)
+    }
   },
 
   /**

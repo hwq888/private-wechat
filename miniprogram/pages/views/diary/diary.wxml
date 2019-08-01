@@ -1,15 +1,22 @@
 <!--miniprogram/pages/views/diary/diary.wxml-->
 <view class="diary-box">
   <view wx:if="{{list.length > 0}}">
-    <view wx:for="{{list}}" wx:key="{{index}}" class="diary-tab-box" >
-      <van-panel title="{{item.title}}" desc="{{item.time}}" use-footer-slot>
-        <view class="describe-box">{{item.content}}</view>
-        <view slot="footer" class="footer-btn-box">
+    <view wx:for="{{list}}" wx:key="{{index}}" class="diary-tab-box {{selectId==item._id?'activeClass':''}}" >
+      <van-panel title="{{item.title}}" desc="{{item.time}}" data-id='{{item._id}}' bindtap="linkDetails" bindlongtap="longTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+        <view class="describe-box" data-id='{{item._id}}' bindtap="linkDetails">{{item.content}}</view>
+        <!-- <view slot="footer" class="footer-btn-box">
           <van-button size="small" plain type="primary" data-id='{{item._id}}' bindtap="linkDetails">详情</van-button>
-        </view>
+        </view> -->
       </van-panel>
     </view>
-    <van-button round type="primary" class="add-diary-btn" bindtap="onLinkRelease">+</van-button>
+    <view class="diary-bottom-btn {{selectId?'diary-bottom-btn-active':''}}">
+      <view class="add-diary-btn" bindtap="onLinkRelease">+</view>
+      <view class="bottom-btn">
+         <view class="btn-edit" bindtap="onLinkEdit">编辑</view>
+         <view class="btn-del" bindtap="onLinkDel">删除</view>
+      </view>
+    </view>
+    <view class="diary-bottom-mask" wx:if="{{selectId}}" bindtap="removerSelectId"></view>
   </view>
   <no-content wx:if="{{showNoContent}}">
     <view slot="describe">暂无内容</view>
@@ -17,4 +24,5 @@
       <van-button type="primary" size="small">立即发布</van-button>
     </view>
   </no-content>
+  <dialog-alert data="{{alertData}}" bind:alertCallBack="alertCallBack"></dialog-alert>
 </view>

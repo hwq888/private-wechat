@@ -3,6 +3,7 @@
   "usingComponents": {
     "van-button": "/vant-weapp/button",
     "van-panel": "/vant-weapp/panel",
+    "dialog-alert": "/pages/components/dialog-alert/dialog-alert",
     "no-content": "/pages/components/no-content/no-content"
   }
 }
