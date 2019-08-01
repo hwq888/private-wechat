@@ -1,6 +1,5 @@
 <!--miniprogram/pages/views/diary/diary.wxml-->
 <view class="diary-box">
-  <!-- <view>{{totalCount}}</view> -->
   <view wx:if="{{list.length > 0}}">
     <view wx:for="{{list}}" wx:key="{{index}}" class="diary-tab-box" >
       <van-panel title="{{item.title}}" desc="{{item.time}}" use-footer-slot>
