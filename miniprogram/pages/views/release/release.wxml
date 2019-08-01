@@ -1,0 +1,34 @@
+<!--miniprogram/pages/views/release/release.wxml-->
+<view class="release-box">
+   <!-- <view>{{bindType}}</view>
+   <view>{{time}}</view> -->
+   <van-cell-group>
+      <van-field
+        value="{{ title }}"
+        clearable
+        label="标题"
+        placeholder="请输入标题"
+        maxlength="30"
+        title-width="100rpx"
+        data-type="title"
+        bindinput="bindKeyInput"
+      />
+      <van-field
+        value="{{ content }}"
+        type="textarea"
+        clearable
+        label="内容"
+        placeholder="请输入内容,最少10个文字"
+        autosize
+        border="{{ false }}"
+        title-width="100rpx"
+        data-type="content"
+        bindinput="bindKeyInput"
+      />
+    </van-cell-group>
+    <view class="large-btn-box btn-box">
+      <van-button size="large" round type="primary" disabled="{{loading}}" loading="{{loading}}" bindtap="submit">提交</van-button>
+      <!-- <van-button size="large" round type="primary" bindtap="delete">删除</van-button> -->
+    </view>
+    
+</view>

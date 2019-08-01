@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "日程管理",
+  "usingComponents": {
+    "no-content": "/pages/components/no-content/no-content"
+  }
+}

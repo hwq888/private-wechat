@@ -1,0 +1,27 @@
+/* pages/components/no-content/no-content.wxss */
+/* @import "/style/guide.wxss"; */
+.no-content{
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.no-content-box{
+  margin-top:-30vh;
+}
+.describe{
+  font-size: 32rpx;
+  color: #999;
+  text-align: center;
+}
+.operation{
+  color: #1989fa;
+  font-size: 32rpx;
+  /* border:1px solid #1989fa; */
+  padding: 20rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  margin-top:40rpx;
+}

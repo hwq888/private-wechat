@@ -1,0 +1,8 @@
+<!--pages/components/no-content/no-content.wxml-->
+<view class="no-content">
+  <view class="no-content-box">
+     <van-icon name="smile-comment-o" color="#e0e0e0" size="80px" />
+     <view class="describe"><slot name="describe"></slot></view>
+     <view class="operation"><slot name="operation"></slot></view>
+  </view>
+</view>

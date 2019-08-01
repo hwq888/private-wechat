@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "备忘录",
+  "usingComponents": {
+    "no-content": "/pages/components/no-content/no-content"
+  }
+}

@@ -1,0 +1,15 @@
+/* pages/components/dialog-alert/dialog-alert.wxss */
+.message-box{
+    max-height: 60vh;
+    padding: 75rpx 50rpx;
+    overflow-y: auto;
+    font-size: 36rpx;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    text-align: center;
+    -webkit-overflow-scrolling: touch;
+    color: #7d7e80;
+}
+.use-slot-dialog-box .van-dialog__confirm{
+  color: #f8a904!important;
+}

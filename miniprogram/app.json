@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/views/index/index",
+    "pages/views/passWord/passWord",
+    "pages/views/photo/photo",
+    "pages/views/diary/diary",
+    "pages/views/schedule/schedule",
+    "pages/views/memorandum/memorandum",
+    "pages/views/release/release",
+    "pages/views/diary/details/details"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#07c160",
+    "navigationBarTitleText": "私密管理",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json"
+}

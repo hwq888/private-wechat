@@ -1,0 +1,15 @@
+<!--pages/components/dialog-alert/dialog-alert.wxml-->
+<!-- <van-dialog id="van-dialog" /> -->
+<view class="use-slot-dialog-box">
+  <van-dialog
+  use-slot
+  show="{{data.show}}"
+  show-cancel-button="{{data.cancelBtn}}"
+  cancel-button-text="{{data.cancelBtnText}}"
+  confirmButtonText="{{data.confirmButtonText}}"
+  bind:confirm="confirm"
+>
+ <view class="message-box">{{ data.message }}</view>
+</van-dialog>
+</view>
+

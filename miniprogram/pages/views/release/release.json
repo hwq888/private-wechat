@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "发布",
+  "usingComponents": {
+    "van-button": "/vant-weapp/button",
+    "van-field": "/vant-weapp/field"
+  }
+}

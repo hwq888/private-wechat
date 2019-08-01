@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "相册管理",
+  "usingComponents": {
+    "no-content": "/pages/components/no-content/no-content"
+  }
+}

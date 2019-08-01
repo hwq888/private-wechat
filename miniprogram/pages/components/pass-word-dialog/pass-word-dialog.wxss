@@ -1,0 +1,29 @@
+/* pages/components/pass-word-dialog/pass-word-dialog.wxss */
+
+.passWord {
+  width:640rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50rpx 0;
+  background: #fff;
+}
+.pwa-title{
+  font-size: 32rpx;
+  color: #999;
+  padding: 50rpx 0 0 50rpx;
+}
+.pwa-input-box input {
+  width:90rpx;
+  height:90rpx;
+  line-height: 90rpx;
+  border:1px solid #e0e0e0;
+  text-align: center;
+  margin-left: -1px;
+}
+.pwa-btn-box{
+  background: #fff;
+  text-align: center;
+  padding-bottom: 50rpx;
+}

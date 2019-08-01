@@ -1,0 +1,4 @@
+<!--miniprogram/pages/views/diary/details/details.wxml-->
+<view class="content-box">
+ {{content}}
+</view>

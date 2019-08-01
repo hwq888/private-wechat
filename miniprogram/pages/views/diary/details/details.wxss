@@ -1,0 +1,7 @@
+/* miniprogram/pages/views/diary/details/details.wxss */
+.content-box{
+  padding: 30rpx;
+  font-size: 34rpx;
+  line-height: 50rpx;
+  color: #333;
+}

@@ -1,0 +1,6 @@
+<!--miniprogram/pages/views/schedule/schedule.wxml-->
+<view>
+  <no-content>
+    <view slot="describe">暂无内容</view>
+  </no-content>
+</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "日记管理",
+  "usingComponents": {
+    "van-button": "/vant-weapp/button",
+    "van-panel": "/vant-weapp/panel",
+    "no-content": "/pages/components/no-content/no-content"
+  }
+}

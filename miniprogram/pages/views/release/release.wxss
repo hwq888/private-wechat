@@ -1,0 +1,10 @@
+/* miniprogram/pages/views/release/release.wxss */
+@import "/style/guide.wxss";
+.release-box .van-field__body--textarea .van-field__input {
+  min-height: 30vh;
+  max-height: 70vh;
+}
+.btn-box{
+  margin-top:50rpx;
+  padding: 0 50rpx;
+}

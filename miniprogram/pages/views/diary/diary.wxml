@@ -1,0 +1,32 @@
+<!--miniprogram/pages/views/diary/diary.wxml-->
+<view class="diary-box">
+  <!-- <view>{{totalCount}}</view> -->
+  <!-- <view wx:if="{{list.length > 0}}">
+    <view wx:for="{{list}}" wx:key="{{index}}" class="diary-tab-box" >
+      <van-panel title="{{item.title}}" desc="{{item.time}}" use-footer-slot>
+        <view class="describe-box">{{item.content}}</view>
+        <view slot="footer" class="footer-btn-box">
+          <van-button size="small" plain type="primary" data-id='{{item._id}}' bindtap="linkDetails">详情</van-button>
+        </view>
+      </van-panel>
+    </view>
+    <van-button round type="primary" class="add-diary-btn" bindtap="onLinkRelease">+</van-button>
+  </view> -->
+  <scroll-view scroll-y="true" wx:if="{{list.length > 0}}" class="scroll-view-box">
+    <view wx:for="{{list}}" wx:key="{{index}}" class="diary-tab-box" >
+      <van-panel title="{{item.title}}" desc="{{item.time}}" use-footer-slot>
+        <view class="describe-box">{{item.content}}</view>
+        <view slot="footer" class="footer-btn-box">
+          <van-button size="small" plain type="primary" data-id='{{item._id}}' bindtap="linkDetails">详情</van-button>
+        </view>
+      </van-panel>
+    </view>
+    <van-button round type="primary" class="add-diary-btn" bindtap="onLinkRelease">+</van-button>
+  </scroll-view>
+  <no-content wx:if="{{showNoContent}}">
+    <view slot="describe">暂无内容</view>
+    <view slot="operation" bindtap="onLinkRelease">
+      <van-button type="primary" size="small">立即发布</van-button>
+    </view>
+  </no-content>
+</view>

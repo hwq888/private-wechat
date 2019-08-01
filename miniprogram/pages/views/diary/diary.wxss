@@ -1,0 +1,28 @@
+/* miniprogram/pages/views/diary/diary.wxss */
+/* @import "/style/guide.wxss"; */
+.scroll-view-box{
+  height:100vh;
+}
+.diary-tab-box{
+  margin-top:20rpx;
+}
+.describe-box{
+  margin: 30rpx 0;
+  padding: 0 50rpx;
+  font-size: 12px;
+  color:#999;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.footer-btn-box{
+  text-align: right;
+}
+.add-diary-btn .van-button--normal {
+  z-index: 50;
+  position: fixed;
+  bottom: 20rpx;
+  left: 320rpx;
+  font-size:40rpx;
+}

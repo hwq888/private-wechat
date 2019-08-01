@@ -1,0 +1,33 @@
+<!--pages/components/pass-word-dialog/pass-word-dialog.wxml-->
+<!-- <text>pages/components/pass-word-dialog/pass-word-dialog.wxml</text> -->
+<van-popup show="{{ data.show }}" bind:close="onClose">
+<!-- <view>A = {{a}}</view>
+<view>B = {{b}}</view>
+<view>SUM = {{sum}}</view>
+<button bindtap="onTap">click</button> -->
+  <view class="pwa-title">请输入密码</view>
+  <view class="passWord">
+    <view class="pwa-input-box">
+      <input type="number" password='{true}' maxlength="1" data-id="p1" bindinput="bindKeyInput" value="{{p1}}" focus='{{p1f}}'/>
+    </view>
+    <view class="pwa-input-box">
+      <input type="number" password='{true}' maxlength="1" data-id="p2" bindinput="bindKeyInput" value="{{p2}}" focus='{{p2f}}'/>
+    </view>
+    <view class="pwa-input-box">
+      <input type="number" password='{true}' maxlength="1" data-id="p3" bindinput="bindKeyInput" value="{{p3}}" focus='{{p3f}}'/>
+    </view>
+    <view class="pwa-input-box">
+      <input type="number" password='{true}' maxlength="1" data-id="p4" bindinput="bindKeyInput" value="{{p4}}" focus='{{p4f}}'/>
+    </view>
+    <view class="pwa-input-box">
+      <input type="number" password='{true}' maxlength="1" data-id="p5" bindinput="bindKeyInput" value="{{p5}}" focus='{{p5f}}'/>
+    </view>
+    <view class="pwa-input-box">
+      <input type="number" password='{true}' maxlength="1" data-id="p6" bindinput="bindKeyInput" value="{{p6}}" focus='{{p6f}}'/>
+    </view>
+  </view>
+  <view class="pwa-btn-box">
+    <van-button type="primary" bindtap="submit" disabled="{{loading}}" loading="{{loading}}">确定</van-button>
+  </view>
+</van-popup>
+

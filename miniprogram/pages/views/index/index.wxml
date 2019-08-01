@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+    <view>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <!-- <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button> -->
+    </view>
+  </view>
+
+   <!-- 私密列表 -->
+  <view class="list-box">
+    <van-cell title="日记管理" is-link data-url="../diary/diary" clickable bindtap="onLink"></van-cell>
+    <van-cell title="相册管理" is-link data-url="../photo/photo" clickable bindtap="onLink"></van-cell>
+    <van-cell title="日程管理" is-link data-url="../schedule/schedule" clickable bindtap="onLink"></van-cell>
+    <van-cell title="备忘录" is-link data-url="../memorandum/memorandum" clickable bindtap="onLink"></van-cell>
+  </view>
+
+   <!-- 关于我们 -->
+  <view class="about-box">
+    <text data-url="../diary/diary" bindtap="onLink">关于我们</text>
+  </view>
+
+  <dialog-alert data="{{alertData}}" bind:alertCallBack="alertCallBack"></dialog-alert>
+  <pass-word-dialog data="{{passWordData}}" bind:passWordCallBack="passWordCallBack"></pass-word-dialog>
+
+</view>
