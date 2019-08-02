@@ -11,6 +11,5 @@
 
   <view class="list-box">
     <van-cell title="版本">{{aboutData.version}}</van-cell>
-    <van-cell title="联系我们">{{aboutData.contact}}</van-cell>
   </view>
 </view>

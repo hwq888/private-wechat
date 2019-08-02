@@ -15,8 +15,7 @@ Page({
     interval: 3000,
     duration: 500,
     aboutData: {
-      version: 'V1.0.0',
-      contact: 'hwq888_ok@163.com'
+      version: 'V1.0.0'
     }
   },
 
