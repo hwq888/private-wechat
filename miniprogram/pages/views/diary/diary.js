@@ -82,9 +82,11 @@ Page({
     // 控制点击事件在350ms内触发，加这层判断是为了防止长按时会触发点击事件
     if (this.touchEndTime - this.touchStartTime < 350) {
       const _id = e.target.dataset.id
-      wx.navigateTo({
-        url: './details/details?id=' + _id
-      })
+      if (_id) {
+        wx.navigateTo({
+          url: './details/details?id=' + _id
+        })
+      }
     }
   },
   // 跳转到发布日记
