@@ -14,7 +14,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#07c160",
-    "navigationBarTitleText": "密巢",
+    "navigationBarTitleText": "日常记录",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"

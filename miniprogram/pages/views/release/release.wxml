@@ -12,7 +12,7 @@
         title-width="100rpx"
         data-type="title"
         bindinput="bindKeyInput"
-        wx:if="{{bindType === 1}}"
+        wx:if="{{bindType === '1'}}"
       />
       <van-field
         value="{{ content }}"

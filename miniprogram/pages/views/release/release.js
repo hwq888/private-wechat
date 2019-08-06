@@ -10,7 +10,7 @@ Page({
   data: {
     loading: false,
     id: '', // 编辑id
-    bindType: '', // 1: 日记 2:备忘录
+    bindType: '', // 1: 发布日记 2:发布便签
     title: '',
     content: '',
     time: ''
@@ -32,7 +32,7 @@ Page({
   },
   // 确定
   submit: function () {
-    if (!this.data.title && this.data.bindType === 1) {
+    if (this.data.bindType === '1' && !this.data.title) {
       wx.showToast({
         title: '请输入标题',
         icon: 'none'
@@ -212,34 +212,25 @@ Page({
     this.setData({
       bindType: options.type
     })
-    // 编辑日记
-    if (options.id) {
-      this.setData({
-        id: options.id
-      })
-      if (this.data.bindType === '1') {
-        wx.setNavigationBarTitle({
-          title: '编辑日记'
-        })
+    if (this.data.bindType === '1') {
+      if (options.id) {
+        wx.setNavigationBarTitle({title: '编辑日记'})
+        this.setData({id: options.id})
         this.getDiary(this.data.id)
+      } else {
+        wx.setNavigationBarTitle({title: '发布日记'})
       }
-      if (this.data.bindType === '2') {
-        wx.setNavigationBarTitle({
-          title: '编辑便签'
-        })
+     
+    }
+    if (this.data.bindType === '2') {
+      if (options.id) {
+        this.setData({id: options.id})
+        wx.setNavigationBarTitle({title: '编辑便签'})
         this.getMemorandum(this.data.id)
+      } else {
+        wx.setNavigationBarTitle({ title: '发布便签' })
       }
-    } else {
-      if (this.data.bindType === '1') {
-        wx.setNavigationBarTitle({
-          title: '发布日记'
-        })
-      }
-      if (this.data.bindType === '2') {
-        wx.setNavigationBarTitle({
-          title: '发布便签'
-        })
-      }
+      
     }
   },
 
